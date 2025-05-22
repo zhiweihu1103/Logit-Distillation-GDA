@@ -38,3 +38,27 @@ python train_classifier.py --config config/classifier/train_classifier_mini.yaml
 python train_classifier.py --config config/classifier/train_classifier_mini.yaml --res_type resnet18_bottle --gpu 0,1,2,3
 python train_classifier.py --config config/classifier/train_classifier_mini.yaml --res_type resnet36_bottle --gpu 0,1,2,3
 ```
+* Knowledge Distillation
+```
+python train_classifier.py --config config/classifier/train_classifier_mini_kd.yaml --res_type resnet36_bottle --teacher_res_type resnet12_bottle --gpu 0,1,2,3
+python train_classifier.py --config config/classifier/train_classifier_mini_kd.yaml --res_type resnet36_bottle --teacher_res_type resnet18_bottle --gpu 0,1,2,3
+```
+#### Training Meta-Baseline
+* Training
+```
+python train_meta.py --config config/meta/train_meta_mini.yaml --res_type resnet12 --gpu 0,1
+python train_meta.py --config config/meta/train_meta_mini.yaml --res_type resnet18 --gpu 0,1
+python train_meta.py --config config/meta/train_meta_mini.yaml --res_type resnet36 --gpu 0,1
+```
+* Knowledge Distillation (classifier teacher)
+```
+python train_meta.py --config config/meta/train_meta_mini_kd.yaml --res_type resnet36_bottle --teacher_res_type resnet12_bottle --gpu 0,1
+python train_meta.py --config config/meta/train_meta_mini_kd.yaml --res_type resnet36_bottle --teacher_res_type resnet18_bottle --gpu 0,1
+```
+* Knowledge Distillation (meta teacher)
+```
+python train_meta.py --config config/meta/train_meta_mini_kd.yaml --res_type resnet36_bottle --teacher_res_type resnet12_bottle  --teacher_meta_model --gpu 0,1
+python train_meta.py --config config/meta/train_meta_mini_kd.yaml --res_type resnet36_bottle --teacher_res_type resnet18_bottle  --teacher_meta_model --gpu 0,1
+```
+**Note:** 
+1. For the definitions of different distillation losses, you can find them in `Few-shot Learning/utils/__init__.py`.
