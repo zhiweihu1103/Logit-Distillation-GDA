@@ -15,4 +15,8 @@
 3. Download the pre-trained weights from [Strong-to-Weak](https://github.com/megvii-research/mdistiller/releases/tag/checkpoints) and [Weak-to-Strong](https://github.com/ggjy/vision_weak_to_strong/releases/tag/cifar-ckpt-1).
 4. Put weights into **Image Classification\cache\ckpt\cifar**.
 
-
+### Training model
+```python
+sh train.sh
+```
+**Note:** We only use KD as the basis, select ResNet56 as the teacher model and ResNet20 as the student model as examples. You can freely modify the variable values ​​defined at the beginning of `train.sh`.
